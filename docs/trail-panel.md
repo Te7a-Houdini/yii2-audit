@@ -52,6 +52,12 @@ class Post extends \yii\db\ActiveRecord
                 'active' => true,
                 // Date format to use in stamp - set to "Y-m-d H:i:s" for datetime or "U" for timestamp
                 'dateFormat' => 'Y-m-d H:i:s',
+                //Change the oldValue and newValue values to the related model with custom return fields
+                //For ex:- let's assume that tag have many posts and post belongs to one tag
+                // so this will replace the ids with related names 
+                'override' => [
+                    'tag_id' => ['tableName' => 'tag' , 'searchField' => 'id' , 'returnField' => 'name']
+                ]
             ]
         ];
     }
